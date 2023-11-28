@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.19;
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
@@ -15,9 +15,9 @@ contract Dlaunchpad {
         return price;
     }
 
-    function convertEthToUsd(uint256 weiAmount) public view returns (uint256) {
+    function getNetWorth(uint256 weiAmount) public view returns (uint256) {
         int price = getLatestPrice();
-        uint256 usdAmount = (weiAmount * uint256(price)) / 1e18;
-        return usdAmount;
+        uint256 netWorth = (weiAmount * uint256(price)) / 1e18;
+        return netWorth;
     }
 }
