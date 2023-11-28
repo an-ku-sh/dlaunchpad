@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
     if (response.statusCode == 200) {
       // 200 OK response => then parse the JSON.
       Map<String, dynamic> json = jsonDecode(response.body);
-      print('Balance: ${json['result']}');
+      // print('Balance: ${json['result']}');
       setState(() {
         _sepoliaBalance = 'Balance: ${json['result']}';
       });
