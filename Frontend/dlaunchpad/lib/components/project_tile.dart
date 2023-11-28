@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProjectTile extends StatelessWidget {
+class ProjectTile extends StatefulWidget {
   final String publicAddress;
   final String imgId;
   final String heading;
@@ -15,31 +15,36 @@ class ProjectTile extends StatelessWidget {
   });
 
   @override
+  State<ProjectTile> createState() => _ProjectTileState();
+}
+
+class _ProjectTileState extends State<ProjectTile> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
+      height: 400,
       width: 300,
       decoration: BoxDecoration(
         border: Border.all(width: 0.1),
       ),
       child: Column(
         children: [
-          Image.asset("lib/assets/img$imgId.jpg"),
+          Image.asset("lib/assets/img${widget.imgId}.jpg"),
           const SizedBox(
             height: 5,
           ),
           Text(
-            heading,
+            widget.heading,
             style: GoogleFonts.abel(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              pitch,
-              style: TextStyle(fontSize: 12),
+              widget.pitch,
+              style: const TextStyle(fontSize: 12),
             ),
           ),
           const SizedBox(
@@ -50,17 +55,25 @@ class ProjectTile extends StatelessWidget {
             color: Colors.grey,
             width: double.infinity,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.heat_pump_rounded),
-                label: const Text("Give Feedback"),
-              )
+                label: const Text("Invest your TRST"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.verified),
+                label: const Text("Verify TRST on Blockscout"),
+              ),
             ],
           ),
         ],

@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
   //harcoded public address
   String address = '0xaF8c55A5b4421252CA8fB6f77063c15805d7e40D';
   String _sepoliaBalance = '0';
-  String _ethPrice = '';
+  final String _ethPrice = '';
   String networth = '';
   SmartContractBridge smartContractBridge = SmartContractBridge();
 
@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Login With Public Key",
+                  "Login With Public Address",
                   style: GoogleFonts.monda(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
