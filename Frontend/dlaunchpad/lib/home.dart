@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
             ElevatedButton(
               onPressed: () async {
                 List result = await smartContractBridge
-                    .convertEthToUsd(BigInt.parse(_sepoliaBalance));
+                    .getNetWorth(BigInt.parse(_sepoliaBalance));
                 setState(() {
                   networth = result[0].toString();
                 });

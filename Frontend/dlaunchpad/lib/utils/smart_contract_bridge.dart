@@ -45,9 +45,9 @@ class SmartContractBridge {
     return result;
   }
 
-  Future<List> convertEthToUsd(amount) async {
+  Future<List> getNetWorth(amount) async {
     DeployedContract contract = await getDeployedContract();
-    final etherFunction = contract.function("convertEthToUsd");
+    final etherFunction = contract.function("getNetWorth");
     final result = await web3client.call(
       contract: contract,
       function: etherFunction,
