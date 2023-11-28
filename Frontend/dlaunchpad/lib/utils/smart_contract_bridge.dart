@@ -45,6 +45,18 @@ class SmartContractBridge {
     return result;
   }
 
+  Future<List> convertEthToUsd(amount) async {
+    DeployedContract contract = await getDeployedContract();
+    final etherFunction = contract.function("convertEthToUsd");
+    final result = await web3client.call(
+      contract: contract,
+      function: etherFunction,
+      params: [amount],
+    );
+    // print(result[0]);
+    return result;
+  }
+
   Future<DeployedContract> getDeployedContract() async {
     String abi = await rootBundle.loadString("lib/assets/abi.json");
     final contract = DeployedContract(ContractAbi.fromJson(abi, "Chainlink"),

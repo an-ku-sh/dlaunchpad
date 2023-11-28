@@ -15,6 +15,7 @@ class _HomeState extends State<Home> {
   String address = '0xaF8c55A5b4421252CA8fB6f77063c15805d7e40D';
   String _sepoliaBalance = '0';
   String _ethPrice = '';
+  String networth = '';
   SmartContractBridge smartContractBridge = SmartContractBridge();
 
   @override
@@ -34,7 +35,8 @@ class _HomeState extends State<Home> {
       Map<String, dynamic> json = jsonDecode(response.body);
       // print('Balance: ${json['result']}');
       setState(() {
-        _sepoliaBalance = 'Balance: ${json['result']}';
+        // _sepoliaBalance = 'Balance: ${json['result']}';
+        _sepoliaBalance = json['result'];
       });
       return 'Balance: ${json['result']}';
     } else {
@@ -61,6 +63,17 @@ class _HomeState extends State<Home> {
             ),
             Text(_ethPrice),
             Text(_sepoliaBalance),
+            ElevatedButton(
+              onPressed: () async {
+                List result = await smartContractBridge
+                    .convertEthToUsd(BigInt.parse(_sepoliaBalance));
+                setState(() {
+                  networth = result[0].toString();
+                });
+              },
+              child: const Text("get networth"),
+            ),
+            Text("your networth is $networth"),
           ],
         ),
       ),
