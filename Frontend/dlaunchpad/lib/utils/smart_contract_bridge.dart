@@ -59,7 +59,7 @@ class SmartContractBridge {
 
   Future<DeployedContract> getDeployedContract() async {
     String abi = await rootBundle.loadString("lib/assets/abi.json");
-    final contract = DeployedContract(ContractAbi.fromJson(abi, "Chainlink"),
+    final contract = DeployedContract(ContractAbi.fromJson(abi, "Dlaunchpad"),
         EthereumAddress.fromHex(contractAddress!));
     return contract;
   }
