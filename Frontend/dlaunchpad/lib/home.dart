@@ -1,3 +1,4 @@
+import 'package:dlaunchpad/components/project_tile.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -49,210 +50,79 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 10,
-          backgroundColor: Colors.grey[100],
-          toolbarHeight: 100,
-          title: Text(
-            "dlaunchpad",
-            style: GoogleFonts.electrolize(
-              fontSize: 50,
-            ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 10,
+        backgroundColor: Colors.grey[100],
+        toolbarHeight: 100,
+        title: Text(
+          "dlaunchpad",
+          style: GoogleFonts.electrolize(
+            fontSize: 50,
           ),
-          centerTitle: true,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Login With Public Key",
-                    style: GoogleFonts.monda(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
+        ),
+        centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Login With Public Key",
+                  style: GoogleFonts.monda(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
                 ),
               ),
-            )
+            ),
+          )
+        ],
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 40,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ProjectTile(
+                  publicAddress: 'publicAddress',
+                  imgId: '2',
+                  heading: "Polaroids NewX 2",
+                  pitch:
+                      "Snap, print, and share your memories with a smart camera that links physical photos to digital albums.",
+                ),
+                ProjectTile(
+                  publicAddress: 'publicAddress',
+                  imgId: '1',
+                  heading: "Spicezz Authentics",
+                  pitch:
+                      "Spicezz Authentics: Authentic, fresh, and delicious spices from around the world delivered to your doorstep",
+                ),
+                ProjectTile(
+                  publicAddress: 'publicAddress',
+                  imgId: '3',
+                  heading: "WhiteGen Shoes",
+                  pitch:
+                      "WhiteGen Shoes:  White sneakers that stay clean no matter what. Customizable, comfortable, and eco-friendly shoes for every occasion.",
+                )
+              ],
+            ),
           ],
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 40,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  //Start of tile
-                  Container(
-                    height: 350,
-                    width: 300,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 0.1),
-                    ),
-                    child: Column(
-                      children: [
-                        Image.asset("lib/assets/img2.jpg"),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "Polaroids NewX 2",
-                          style: GoogleFonts.abel(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Snap, print, and share your memories with a smart camera that links physical photos to digital albums.",
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          height: 0.6,
-                          color: Colors.grey,
-                          width: double.infinity,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ElevatedButton.icon(
-                              onPressed: () {},
-                              icon: const Icon(Icons.heat_pump_rounded),
-                              label: const Text("Give Feedback"),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  //End of tile
-                  // //Start of tile
-                  // Container(
-                  //   height: 350,
-                  //   width: 300,
-                  //   decoration: BoxDecoration(
-                  //     border: Border.all(width: 0.1),
-                  //   ),
-                  //   child: Column(
-                  //     children: [
-                  //       Image.asset("lib/assets/img1.jpg"),
-                  //       const SizedBox(
-                  //         height: 5,
-                  //       ),
-                  //       Text(
-                  //         "Spicezz Authentics",
-                  //         style: GoogleFonts.abel(
-                  //           fontSize: 20,
-                  //           fontWeight: FontWeight.bold,
-                  //         ),
-                  //       ),
-                  //       const Padding(
-                  //         padding: EdgeInsets.all(8.0),
-                  //         child: Text(
-                  //           "Spicezz Authentics: Authentic, fresh, and delicious spices from around the world delivered to your doorstep",
-                  //           style: TextStyle(fontSize: 12),
-                  //         ),
-                  //       ),
-                  //       SizedBox(
-                  //         height: 20,
-                  //       ),
-                  //       Container(
-                  //         height: 0.6,
-                  //         color: Colors.grey,
-                  //         width: double.infinity,
-                  //       ),
-                  //       SizedBox(
-                  //         height: 10,
-                  //       ),
-                  //       Row(
-                  //         mainAxisAlignment: MainAxisAlignment.center,
-                  //         children: [
-                  //           ElevatedButton.icon(
-                  //             onPressed: () {},
-                  //             icon: const Icon(Icons.heat_pump_rounded),
-                  //             label: const Text("Give Feedback"),
-                  //           )
-                  //         ],
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                  // //End of tile
-                  // //Start of tile
-                  // Container(
-                  //   height: 350,
-                  //   width: 300,
-                  //   decoration: BoxDecoration(
-                  //     border: Border.all(width: 0.1),
-                  //   ),
-                  //   child: Column(
-                  //     children: [
-                  //       Image.asset("lib/assets/img3.jpg"),
-                  //       const SizedBox(
-                  //         height: 5,
-                  //       ),
-                  //       Text(
-                  //         "WhiteGen Shoes",
-                  //         style: GoogleFonts.abel(
-                  //           fontSize: 20,
-                  //           fontWeight: FontWeight.bold,
-                  //         ),
-                  //       ),
-                  //       const Padding(
-                  //         padding: EdgeInsets.all(8.0),
-                  //         child: Text(
-                  //           "WhiteGen Shoes:  White sneakers that stay clean no matter what. Customizable, comfortable, and eco-friendly shoes for every occasion.",
-                  //           style: TextStyle(fontSize: 12),
-                  //         ),
-                  //       ),
-                  //       SizedBox(
-                  //         height: 20,
-                  //       ),
-                  //       Container(
-                  //         height: 0.6,
-                  //         color: Colors.grey,
-                  //         width: double.infinity,
-                  //       ),
-                  //       SizedBox(
-                  //         height: 10,
-                  //       ),
-                  //       Row(
-                  //         mainAxisAlignment: MainAxisAlignment.center,
-                  //         children: [
-                  //           ElevatedButton.icon(
-                  //             onPressed: () {},
-                  //             icon: const Icon(Icons.heat_pump_rounded),
-                  //             label: const Text("Vote with TRST"),
-                  //           )
-                  //         ],
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                  //End of tile
-                ],
-              ),
-            ],
-          ),
-        )
-        // Center(
+      ),
+    );
+  }
+}
+
+ // Center(
         //   child: Column(
         //     children: [
         //       ElevatedButton(
@@ -281,6 +151,3 @@ class _HomeState extends State<Home> {
         //     ],
         //   ),
         // ),
-        );
-  }
-}
