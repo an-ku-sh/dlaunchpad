@@ -1,3 +1,4 @@
+import 'package:dlaunchpad/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,6 +20,8 @@ class ProjectTile extends StatefulWidget {
 }
 
 class _ProjectTileState extends State<ProjectTile> {
+  TextEditingController textEditingController = TextEditingController();
+  int trstAmount = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,18 +65,44 @@ class _ProjectTileState extends State<ProjectTile> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Enter TRST Amount'),
+                        content: TextField(
+                          controller: textEditingController,
+                          decoration: const InputDecoration(
+                              hintText: 'Enter your amount here'),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('OK'),
+                            onPressed: () {
+                              setState(() {});
+                              trstAmount +=
+                                  int.parse(textEditingController.text);
+                              trstCount -=
+                                  int.parse(textEditingController.text);
+                              textEditingController.clear();
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
                 icon: const Icon(Icons.heat_pump_rounded),
                 label: const Text("Invest your TRST"),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 14),
               ElevatedButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.verified),
-                label: const Text("Verify TRST on Blockscout"),
-              ),
+                label: Text("TRST count $trstAmount"),
+              )
             ],
           ),
         ],

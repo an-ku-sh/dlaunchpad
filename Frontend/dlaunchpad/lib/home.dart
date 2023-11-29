@@ -1,4 +1,5 @@
 import 'package:dlaunchpad/components/project_tile.dart';
+import 'package:dlaunchpad/main.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -18,7 +19,6 @@ class _HomeState extends State<Home> {
   TextEditingController textEditingController = TextEditingController();
   String publicAddress = '';
   String _sepoliaBalance = '0';
-  String trstCount = '';
   final String _ethPrice = '';
   String networth = '';
   SmartContractBridge smartContractBridge = SmartContractBridge();
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
       setState(() {
         // _sepoliaBalance = 'Balance: ${json['result']}';
         _sepoliaBalance = json['result'];
-        trstCount = _sepoliaBalance.substring(0, 5);
+        trstCount = int.parse(_sepoliaBalance.substring(0, 5));
       });
       return 'Balance: ${json['result']}';
     } else {
