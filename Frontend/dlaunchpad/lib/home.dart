@@ -14,15 +14,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   //harcoded public address
-  String address = '0xaF8c55A5b4421252CA8fB6f77063c15805d7e40D';
+  // String address = '0xaF8c55A5b4421252CA8fB6f77063c15805d7e40D';
+  TextEditingController textEditingController = TextEditingController();
+  String publicAddress = '';
   String _sepoliaBalance = '0';
+  int trstCount = 0;
   final String _ethPrice = '';
   String networth = '';
   SmartContractBridge smartContractBridge = SmartContractBridge();
 
   @override
   void initState() {
-    fetchBalance(address);
+    // fetchBalance(address);
     smartContractBridge.initial();
     super.initState();
   }
@@ -39,6 +42,7 @@ class _HomeState extends State<Home> {
       setState(() {
         // _sepoliaBalance = 'Balance: ${json['result']}';
         _sepoliaBalance = json['result'];
+        trstCount = int.parse(_sepoliaBalance);
       });
       return 'Balance: ${json['result']}';
     } else {
@@ -52,6 +56,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: Text(trstCount.toString()),
         elevation: 10,
         backgroundColor: Colors.grey[100],
         toolbarHeight: 100,
@@ -65,19 +70,47 @@ class _HomeState extends State<Home> {
         actions: [
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Login With Public Address",
-                  style: GoogleFonts.monda(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ),
-            ),
+            child: publicAddress == ''
+                ? ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Enter Public Address'),
+                            content: TextField(
+                              controller: textEditingController,
+                              decoration:
+                                  const InputDecoration(hintText: 'Type here'),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  setState(() {
+                                    publicAddress = textEditingController.text;
+                                    fetchBalance(publicAddress);
+                                  });
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Login With Public Address",
+                        style: GoogleFonts.monda(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                    ),
+                  )
+                : ElevatedButton(onPressed: () {}, child: Text(publicAddress)),
           )
         ],
       ),
@@ -112,7 +145,7 @@ class _HomeState extends State<Home> {
                   heading: "WhiteGen Shoes",
                   pitch:
                       "WhiteGen Shoes:  White sneakers that stay clean no matter what. Customizable, comfortable, and eco-friendly shoes for every occasion.",
-                )
+                ),
               ],
             ),
           ],
