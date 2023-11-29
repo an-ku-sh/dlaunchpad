@@ -1,6 +1,7 @@
 # Dlaunchpad: "Trust" based launchpad
-#VideoDemo Link 
-#Github pages was having bugs so was unable to push a demo website
+## VideoDemo Link 
+### Github pages was having bugs so was unable to push a demo website
+# Project Description
 Dlaunchpad is a platform that solves the problem of funding innovative projects in the crypto space. Traditional crowdfunding methods rely on fiat money, which can be subject to inflation and devaluation. Dlaunchpad uses TRST tokens, which are distributed to users based on the amount of crypto assets they own. This ensures that the platform is accessible to a wide range of users, regardless of their financial status.
 
 Dlaunchpad also solves the problem of trust and transparency in the crypto ecosystem. Projects on Dlaunchpad are vetted and verified by the platform, so users can be sure that they are supporting quality and authentic projects. The use of Blockscout API and Chainlink oracle price data feeds ensures the accuracy and transparency of the platform, and helps to prevent fraud and scams.
