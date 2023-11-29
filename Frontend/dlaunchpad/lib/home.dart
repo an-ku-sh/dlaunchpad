@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   TextEditingController textEditingController = TextEditingController();
   String publicAddress = '';
   String _sepoliaBalance = '0';
-  int trstCount = 0;
+  String trstCount = '';
   final String _ethPrice = '';
   String networth = '';
   SmartContractBridge smartContractBridge = SmartContractBridge();
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
       setState(() {
         // _sepoliaBalance = 'Balance: ${json['result']}';
         _sepoliaBalance = json['result'];
-        trstCount = int.parse(_sepoliaBalance);
+        trstCount = _sepoliaBalance.substring(0, 5);
       });
       return 'Balance: ${json['result']}';
     } else {
@@ -56,7 +56,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Text(trstCount.toString()),
         elevation: 10,
         backgroundColor: Colors.grey[100],
         toolbarHeight: 100,
@@ -66,7 +65,7 @@ class _HomeState extends State<Home> {
             fontSize: 50,
           ),
         ),
-        centerTitle: true,
+        // centerTitle: true,
         actions: [
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -110,7 +109,19 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   )
-                : ElevatedButton(onPressed: () {}, child: Text(publicAddress)),
+                : Row(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text('TRST TOKENS : $trstCount'),
+                      ),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      ElevatedButton(
+                          onPressed: () {}, child: Text(publicAddress)),
+                    ],
+                  ),
           )
         ],
       ),
