@@ -9,3 +9,9 @@ Dlaunchpad also solves the problem of trust and transparency in the crypto ecosy
 By using TRST tokens, Dlaunchpad also provides a way for users to spend trust tokens on projects that they believe in, and get rewards, governance rights, and feedback from the community. This creates a sense of ownership and participation in the projects, which can lead to greater engagement and success.
 
 Overall, Dlaunchpad is a platform that solves the problem of funding and supporting innovative projects in the crypto space, while ensuring trust, transparency, and accessibility for all users. Join Dlaunchpad today and be part of the future of crypto!
+
+## Use of Blockscout
+Blockscout is used to make RPC API Calls to fetch the ETH balance of public addresses using the following code which can be found in Frontend/dlaunchpad/lib/home.dart
+
+![image](https://github.com/an-ku-sh/dlaunchpad/assets/110815021/9f2533ed-8d8c-438b-9049-7045296f4ec1)
+
