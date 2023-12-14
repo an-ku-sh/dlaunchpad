@@ -14,25 +14,6 @@ class SmartContractBridge {
     web3client = Web3Client(infuraApi, httpClient);
   }
 
-  // Future<String> getLatestPriceTx() async {
-  //   EthPrivateKey privateKeyCred =
-  //       EthPrivateKey.fromHex(dotenv.env['METAMASK_PRIVATE_KEY']!);
-  //   DeployedContract contract = await getDeployedContract();
-  //   final etherFunction = contract.function("getLatestPrice");
-  //   final result = await web3client.sendTransaction(
-  //       privateKeyCred,
-  //       Transaction.callContract(
-  //         contract: contract,
-  //         function: etherFunction,
-  //         parameters: [],
-  //         maxGas: 100000,
-  //       ),
-  //       chainId: null,
-  //       fetchChainIdFromNetworkId: true);
-  //   // print(result);
-  //   return result;
-  // }
-
   Future<List> getLatestPrice() async {
     DeployedContract contract = await getDeployedContract();
     final etherFunction = contract.function("getLatestPrice");
@@ -41,7 +22,6 @@ class SmartContractBridge {
       function: etherFunction,
       params: [],
     );
-    // print(result[0]);
     return result;
   }
 
@@ -53,7 +33,6 @@ class SmartContractBridge {
       function: etherFunction,
       params: [amount],
     );
-    // print(result[0]);
     return result;
   }
 

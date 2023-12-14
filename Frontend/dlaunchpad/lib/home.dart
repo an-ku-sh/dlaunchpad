@@ -1,5 +1,5 @@
-import 'package:dlaunchpad/components/project_tile.dart';
-import 'package:dlaunchpad/main.dart';
+import './components/project_tile.dart';
+import 'main.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -14,18 +14,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  //harcoded public address
-  // String address = '0xaF8c55A5b4421252CA8fB6f77063c15805d7e40D';
   TextEditingController textEditingController = TextEditingController();
   String publicAddress = '';
   String _sepoliaBalance = '0';
-  final String _ethPrice = '';
   String networth = '';
   SmartContractBridge smartContractBridge = SmartContractBridge();
 
   @override
   void initState() {
-    // fetchBalance(address);
     smartContractBridge.initial();
     super.initState();
   }
@@ -36,17 +32,13 @@ class _HomeState extends State<Home> {
         'https://eth-sepolia.blockscout.com/api?module=account&action=balance&address=$address'));
 
     if (response.statusCode == 200) {
-      // 200 OK response => then parse the JSON.
       Map<String, dynamic> json = jsonDecode(response.body);
-      // print('Balance: ${json['result']}');
       setState(() {
-        // _sepoliaBalance = 'Balance: ${json['result']}';
         _sepoliaBalance = json['result'];
         trstCount = int.parse(_sepoliaBalance.substring(0, 5));
       });
       return 'Balance: ${json['result']}';
     } else {
-      // else => exception
       throw Exception('Failed to load balance');
     }
   }
@@ -65,7 +57,6 @@ class _HomeState extends State<Home> {
             fontSize: 50,
           ),
         ),
-        // centerTitle: true,
         actions: [
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -165,33 +156,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
- // Center(
-        //   child: Column(
-        //     children: [
-        //       ElevatedButton(
-        //         onPressed: () async {
-        //           List result = await smartContractBridge.getLatestPrice();
-        //           // print(result[0]);
-        //           setState(() {
-        //             _ethPrice = result[0].toString();
-        //           });
-        //         },
-        //         child: const Text("Get Eth Price"),
-        //       ),
-        //       Text(_ethPrice),
-        //       Text(_sepoliaBalance),
-        //       ElevatedButton(
-        //         onPressed: () async {
-        //           List result = await smartContractBridge
-        //               .getNetWorth(BigInt.parse(_sepoliaBalance));
-        //           setState(() {
-        //             networth = result[0].toString();
-        //           });
-        //         },
-        //         child: const Text("get networth"),
-        //       ),
-        //       Text("your networth is $networth"),
-        //     ],
-        //   ),
-        // ),
