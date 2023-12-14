@@ -45,6 +45,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final currentWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -116,42 +117,64 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 40,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ProjectTile(
-                  publicAddress: 'publicAddress',
-                  imgId: '2',
-                  heading: "Polaroids NewX 2",
-                  pitch:
-                      "Snap, print, and share your memories with a smart camera that links physical photos to digital albums.",
+      body: Center(
+        child: currentWidth > 1100
+            ? const SingleChildScrollView(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ProjectTile(
+                      publicAddress: 'publicAddress',
+                      imgId: '2',
+                      heading: "Polaroids NewX 2",
+                      pitch:
+                          "Snap, print, and share your memories with a smart camera that links physical photos to digital albums.",
+                    ),
+                    ProjectTile(
+                      publicAddress: 'publicAddress',
+                      imgId: '1',
+                      heading: "Spicezz Authentics",
+                      pitch:
+                          "Spicezz Authentics: Authentic, fresh, and delicious spices from around the world delivered to your doorstep",
+                    ),
+                    ProjectTile(
+                      publicAddress: 'publicAddress',
+                      imgId: '3',
+                      heading: "WhiteGen Shoes",
+                      pitch:
+                          "WhiteGen Shoes:  White sneakers that stay clean no matter what. Customizable, comfortable, and eco-friendly shoes for every occasion.",
+                    ),
+                  ],
                 ),
-                ProjectTile(
-                  publicAddress: 'publicAddress',
-                  imgId: '1',
-                  heading: "Spicezz Authentics",
-                  pitch:
-                      "Spicezz Authentics: Authentic, fresh, and delicious spices from around the world delivered to your doorstep",
+              )
+            : const SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ProjectTile(
+                      publicAddress: 'publicAddress',
+                      imgId: '2',
+                      heading: "Polaroids NewX 2",
+                      pitch:
+                          "Snap, print, and share your memories with a smart camera that links physical photos to digital albums.",
+                    ),
+                    ProjectTile(
+                      publicAddress: 'publicAddress',
+                      imgId: '1',
+                      heading: "Spicezz Authentics",
+                      pitch:
+                          "Spicezz Authentics: Authentic, fresh, and delicious spices from around the world delivered to your doorstep",
+                    ),
+                    ProjectTile(
+                      publicAddress: 'publicAddress',
+                      imgId: '3',
+                      heading: "WhiteGen Shoes",
+                      pitch:
+                          "WhiteGen Shoes:  White sneakers that stay clean no matter what. Customizable, comfortable, and eco-friendly shoes for every occasion.",
+                    ),
+                  ],
                 ),
-                ProjectTile(
-                  publicAddress: 'publicAddress',
-                  imgId: '3',
-                  heading: "WhiteGen Shoes",
-                  pitch:
-                      "WhiteGen Shoes:  White sneakers that stay clean no matter what. Customizable, comfortable, and eco-friendly shoes for every occasion.",
-                ),
-              ],
-            ),
-          ],
-        ),
+              ),
       ),
     );
   }
