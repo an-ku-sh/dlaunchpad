@@ -1,6 +1,8 @@
 # Dlaunchpad: "Trust" based launchpad
 ## [VideoDemo Link] (https://youtu.be/2_9E7WVVM1Q)
 ### Github pages was having bugs so was unable to push a demo website
+# How it works
+![Constellation Hackathon](https://github.com/an-ku-sh/dlaunchpad/assets/110815021/80daeb31-f9f4-4aa0-827e-f1628be0a7cd)
 # Project Description
 Dlaunchpad is a platform that solves the problem of funding innovative projects in the crypto space. Traditional crowdfunding methods rely on fiat money, which can be subject to inflation and devaluation. Dlaunchpad uses TRST tokens, which are distributed to users based on the amount of crypto assets they own. This ensures that the platform is accessible to a wide range of users, regardless of their financial status.
 
